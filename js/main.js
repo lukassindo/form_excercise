@@ -58,6 +58,39 @@
         }
     });
 
+    $('#firstname').focus (function () {
+        $('.success').css("display","none");
+        });
+
+    $('#lastname').focus (function () {
+        $('.success').css("display","none");
+        });
+
+    $('#email').focus (function () {
+        $('.success').css("display","none");
+        });
+
+    $('#phone').focus (function () {
+        $('.success').css("display","none");
+        });
+
+    $('#street').focus (function () {
+        $('.success').css("display","none");
+        });
+
+    $('#homenumber').focus (function () {
+        $('.success').css("display","none");
+        });
+
+    $('#postalcode').focus (function () {
+        $('.success').css("display","none");
+        });
+
+    $('#city').focus (function () {
+        $('.success').css("display","none");
+        });
+
+
     $('#postalcode').on('blur', function() {
         var input = $(this);
         var pattern = /^[0-9]{2}-[0-9]{3}/;
@@ -67,7 +100,7 @@
             input.next('.info').text("");
         }
         else{
-            input.next('.info').text("Wprowadź poprawny kod pocztowy").css({"color":"red"});
+            input.next('.info').text("Niepoprawny kod pocztowy").css({"color":"red"});
             $('#postalcode').css({"border":"1px solid #ccc"});
         }
     });
@@ -83,15 +116,16 @@
         if(name.hasClass('ok') && lastname.hasClass('ok') && email.hasClass('ok') && phone.hasClass('ok')) {
             $.ajax({ 
                 type: 'GET', 
-                url:'response.json', 
+                url:'https://raw.githubusercontent.com/lukassindo/form_excercise/master/response.json', 
                 data: { get_param: 'value' }, 
                 dataType: 'json',
                 success: function (data) { 
                     console.log(data);
-                     $('.success').html(data.status.message);
+                     $('.success').css("display","block").html(data.status.message);
                 }
             });
         }
+
         else {  
               alert("Uzupełnij wymagane pola!"); 
         }
